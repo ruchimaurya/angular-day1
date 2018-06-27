@@ -1,0 +1,56 @@
+
+<form #form="ngForm"  (ngSubmit)="onSubmit(empForm)" novalidate >
+			First Name:<br/>
+			<input type="text" name="firstname" [(ngModel)]="model.firstName"   />
+			<br/><br/>
+      Last name:<br/>
+			<input type="text" name="lastname" [(ngModel)]="model.lastName"   />
+			<br/><br/>
+		Email:<br/>
+			<input type="email" name="email"  [(ngModel)]="model.email"   />
+			<br/><br/>
+			Contact Number:<br/>
+			<input type="text" name="contact" [(ngModel)]="model.contactNumber" />
+			<br/><br/>
+			Address:<br/>
+			<textarea name="Address" rows="2" cols="20" [(ngModel)]="model.address"   ></textarea>
+			<br/><br/>
+			Username:<br/>
+			<input type="text" name="username" [(ngModel)]="model.userName"    />
+			<br/><br/>
+			Password:<br/>
+			<input type="password" name="password" [(ngModel)]="model.password"    />
+			<br/><br/>
+			Gender<br/>
+			<input type="radio" name="gender"  value="male" [(ngModel)]="model.gender" > Male<br/>
+			<input type="radio" name="gender" value="female" [(ngModel)]="model.gender" checked> Female<br/>
+			<br/><br/>
+		Qualification:<br/>
+
+			<select name="qualification" [(ngModel)]="model.qualification" >
+  
+        <option *ngFor="let qualification of qualificationList">{{qualification}}</option>
+       </select>
+<br/><br/>
+
+      Experiance:<br/>
+			<select  name="expreriance" [(ngModel)]="model.experiance" >
+			  <option *ngFor="let year of experiance"  >
+        {{year}}
+        </option>
+			</select>
+			<br/><br/>
+         
+      <div class="form-control" *ngFor="let language of languageObj">
+       <input   type="checkbox" id="{{language.languageName}}" name="{{language.languageName}}" value="{{language.languageName}}" (change)= "change(language.languageName)" > 
+       {{language.languageName}}
+      </div>
+      <br/><br/>
+
+         
+			 <input type="submit" value="Submit" ><br/>
+		</form>
+
+ Model : {{model | json}}
+    <br/>
+    Angular: {{form.value | json}}
